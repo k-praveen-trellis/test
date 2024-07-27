@@ -6,6 +6,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    color: #333;
+    background-color: #f4f4f4;
 }
 
 header {
@@ -17,16 +19,23 @@ header {
 nav ul {
     list-style-type: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 1rem;
+    margin: 0 1rem;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ddd;
 }
 
 main {
@@ -34,6 +43,8 @@ main {
     margin: 0 auto;
     padding: 2rem;
     flex-grow: 1;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 footer {
@@ -44,6 +55,7 @@ footer {
     margin-top: auto;
 }
 
+/* Search functionality */
 .search-container {
     margin-bottom: 1rem;
 }
@@ -52,6 +64,8 @@ footer {
     width: 100%;
     padding: 0.5rem;
     font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .item-list {
@@ -60,5 +74,85 @@ footer {
 }
 
 .item-list li {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+
+/* Code blocks */
+pre {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+}
+
+/* Inline code */
+p code, li code {
+    background-color: #f0f0f0;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+/* Embedded items */
+.embedded-item {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: #f9f9f9;
+}
+
+/* Links */
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    color: #222;
+}
+
+h1 {
+    font-size: 2.5em;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.3em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 4px solid #ddd;
+    padding-left: 1rem;
+    margin-left: 0;
+    font-style: italic;
+    color: #555;
 }

@@ -1,4 +1,10 @@
-const converter = new showdown.Converter();
+const converter = new showdown.Converter({
+    tables: true,
+    strikethrough: true,
+    tasklists: true,
+    ghCodeBlocks: true,
+    emoji: true
+});
 const contentDiv = document.getElementById('content');
 
 async function loadContent(page, id = null) {
@@ -14,6 +20,8 @@ async function loadContent(page, id = null) {
     if (page === 'blogs' || page === 'projects') {
         addSearchFunctionality();
     }
+
+    applyStyles();
 }
 
 function addSearchFunctionality() {
@@ -34,6 +42,26 @@ function addSearchFunctionality() {
                 item.style.display = 'none';
             }
         });
+    });
+}
+
+function applyStyles() {
+    // Apply syntax highlighting to code blocks
+    document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+    });
+
+    // Add class to embedded items
+    document.querySelectorAll('blockquote').forEach((item) => {
+        item.classList.add('embedded-item');
+    });
+
+    // Add target="_blank" to external links
+    document.querySelectorAll('a').forEach((link) => {
+        if (link.hostname !== window.location.hostname) {
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+        }
     });
 }
 
