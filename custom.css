@@ -1,0 +1,92 @@
+/* Code blocks */
+.code-block {
+    background-color: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 85%;
+    line-height: 1.45;
+    margin-bottom: 1rem;
+}
+
+/* Inline code */
+.inline-code {
+    background-color: rgba(27, 31, 35, 0.05);
+    border-radius: 3px;
+    font-size: 85%;
+    margin: 0;
+    padding: 0.2em 0.4em;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+/* Images */
+.image-embed {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+    border-radius: 6px;
+}
+
+/* Videos */
+.video-embed {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+}
+
+/* Paragraphs */
+.paragraph {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+/* Tables */
+.custom-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.custom-table th,
+.custom-table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.custom-table th {
+    background-color: #f6f8fa;
+    font-weight: bold;
+}
+
+.custom-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Blockquotes */
+.blockquote {
+    border-left: 4px solid #ddd;
+    padding-left: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    font-style: italic;
+    color: #555;
+}
+
+/* Task lists */
+.task-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.task-list-item {
+    margin-bottom: 0.5rem;
+}
+
+.task-list-item input[type="checkbox"] {
+    margin-right: 0.5rem;
+}

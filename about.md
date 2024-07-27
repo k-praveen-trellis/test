@@ -1,6 +1,6 @@
 # About Me
 
-Hello! I'm [Your Name], a [Your Profession] with a passion for [Your Interests].
+<p class="paragraph">Hello! I'm [Your Name], a [Your Profession] with a passion for [Your Interests].</p>
 
 ## Skills
 
@@ -20,10 +20,4 @@ Hello! I'm [Your Name], a [Your Profession] with a passion for [Your Interests].
 
 ## Education
 
-- Degree, Major, University, Year
-
-## Contact
-
-- Email: your.email@example.com
-- LinkedIn: [Your LinkedIn Profile]
-- GitHub: [Your GitHub Profile]
+- Degree,

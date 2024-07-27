@@ -18,10 +18,46 @@ async function loadContent(page, id = null) {
     contentDiv.innerHTML = html;
 
     if (page === 'blogs' || page === 'projects') {
+        convertToTable(page);
         addSearchFunctionality();
     }
 
     applyStyles();
+}
+
+function convertToTable(page) {
+    const items = document.querySelectorAll('.item-list > div');
+    const tableData = Array.from(items).map(item => {
+        const title = item.querySelector('h2').textContent;
+        const subtitle = item.querySelector('h3').textContent;
+        const date = item.querySelector('p').textContent;
+        const description = item.querySelector('p:nth-of-type(2)').textContent;
+        const link = item.querySelector('a').outerHTML;
+        return [title, subtitle, date, description, link];
+    });
+
+    const csv = Papa.unparse(tableData);
+    const parsedData = Papa.parse(csv, { header: true });
+
+    const table = document.createElement('table');
+    table.className = 'custom-table';
+    table.innerHTML = `
+        <thead>
+            <tr>
+                ${parsedData.meta.fields.map(field => `<th>${field}</th>`).join('')}
+            </tr>
+        </thead>
+        <tbody>
+            ${parsedData.data.map(row => `
+                <tr>
+                    ${parsedData.meta.fields.map(field => `<td>${row[field]}</td>`).join('')}
+                </tr>
+            `).join('')}
+        </tbody>
+    `;
+
+    const itemList = document.querySelector('.item-list');
+    itemList.parentNode.replaceChild(table, itemList);
 }
 
 function addSearchFunctionality() {
@@ -33,13 +69,13 @@ function addSearchFunctionality() {
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', function() {
         const query = this.value.toLowerCase();
-        const items = document.querySelectorAll('.item-list li');
-        items.forEach(item => {
-            const title = item.querySelector('h3').textContent.toLowerCase();
+        const rows = document.querySelectorAll('.custom-table tbody tr');
+        rows.forEach(row => {
+            const title = row.querySelector('td').textContent.toLowerCase();
             if (title.includes(query)) {
-                item.style.display = '';
+                row.style.display = '';
             } else {
-                item.style.display = 'none';
+                row.style.display = 'none';
             }
         });
     });
@@ -49,11 +85,32 @@ function applyStyles() {
     // Apply syntax highlighting to code blocks
     document.querySelectorAll('pre code').forEach((block) => {
         hljs.highlightBlock(block);
+        block.parentNode.classList.add('code-block');
     });
 
-    // Add class to embedded items
-    document.querySelectorAll('blockquote').forEach((item) => {
-        item.classList.add('embedded-item');
+    // Add class to inline code
+    document.querySelectorAll('p code, li code').forEach((code) => {
+        code.classList.add('inline-code');
+    });
+
+    // Add class to images
+    document.querySelectorAll('img').forEach((img) => {
+        img.classList.add('image-embed');
+    });
+
+    // Add class to paragraphs
+    document.querySelectorAll('p').forEach((p) => {
+        p.classList.add('paragraph');
+    });
+
+    // Add class to blockquotes
+    document.querySelectorAll('blockquote').forEach((quote) => {
+        quote.classList.add('blockquote');
+    });
+
+    // Add class to task lists
+    document.querySelectorAll('ul.contains-task-list').forEach((list) => {
+        list.classList.add('task-list');
     });
 
     // Add target="_blank" to external links
